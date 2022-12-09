@@ -223,9 +223,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- right part END -->
-
- <!-- Left part start -->
  <div class="col-lg-7">
     <div class="p-a30 bg-gray clearfix m-b30 ">
         <h2 class="text-uppercase">Feedback</h2>
@@ -237,7 +234,6 @@
 
 
         <form method="post" class="dzForm" action="FeedbackAction.php">
-            <!-- <input type="hidden" name="_token" value="z48BLMfPzzOy7to8DFOHYhIBk0gMemCWA2lKqqew">                            <div class="row"> -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="input-group">
@@ -274,26 +270,12 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <!-- <input type="hidden" name="page" value="contact-us"/>
-                    <input type="hidden" name="source" value="VGI Website"/> -->
                     <button name="submit" type="submit" value="Submit" class="site-button "> <span>Give Feedback</span> </button>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<!-- Left part END -->
-                    
-    <!-- <div class="mobile_footer_btn">
-        <div class="apply_btn">
-            <span class="text-center"><a href="#query-popup" class="open-popup-link" >Request a Call Back</a></span>
-            <span class="text-center"><a href="tel:18008430400">Call Now</a></span>
-            <span class="border-right-0 text-center"><a href="https://admission.vgi.ac.in/" target="_blank"  class="mobile_apply_online">Apply Online</a></span>
-        </div>
-    </div>
-    
-    <button class="scroltop fa fa-arrow-up style3" ></button>
-</div> -->
 <script src="https://www.vgi.ac.in/themes/pixel/js/jquery.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -311,8 +293,6 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="https://www.vgi.ac.in/themes/pixel/js/inner-page.js"></script>
-<!-- <script>var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/5d4172797d27204601c88ea3/default';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();</script> -->
-<!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

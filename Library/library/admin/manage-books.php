@@ -2,6 +2,7 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+include_once '../Admin.php';
 if (strlen($_SESSION['login']) == 0) {
   header('location:http://localhost/php_programs/Library/library/homepage/index.php');
 } else { ?>
@@ -39,7 +40,7 @@ if (strlen($_SESSION['login']) == 0) {
     <div class="container">
       <div class="row pad-botm">
         <div class="col-md-12">
-          <h4 class="header-line">Manage books</h4>
+          <h4><b>Manage books<b><a href="add-book.php"><button style="margin-left:80%;" class="btn btn-warning">Add a new Book</button></a></h4>
         </div>
 
 
@@ -49,7 +50,7 @@ if (strlen($_SESSION['login']) == 0) {
           <!-- Advanced Tables -->
           <div class="panel panel-default">
             <div class="panel-heading">
-              Reg Students
+              Book List
             </div>
             <div class="panel-body">
               <div class="table-responsive">
@@ -61,13 +62,12 @@ if (strlen($_SESSION['login']) == 0) {
                       <th>Book Image</th>
                       <th>ISBN Number</th>
                       <th>Book Name</th>
-                      <th>Action</th>                 
+                      <th>Action</th>
                       <th>Available</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-                    
                     /*
   $cnt = 1;
 
@@ -96,6 +96,7 @@ if (strlen($_SESSION['login']) == 0) {
     echo "Complaints Successfully Resolved...";
 */
 ?>
+
 <?php $sql = "select id,bookImage,ISBNNumber,BookName from tblbooks b,tblbookstocks a where b.id =  a.bookid";
 $query = $dbh -> prepare($sql);
 $query->execute();
@@ -106,12 +107,12 @@ if($query->rowCount() > 0)
    foreach($results as $result)
    {               ?>                                      
                                         <tr class="odd gradeX">
-                                        <td class="center"><?php echo htmlentities($result->id);?></td>
+                                            <td class="center"><?php echo htmlentities($result->id);?></td>
                                             <td class="center"><img src='bookimg/<?php echo htmlentities($result->bookImage);?>' height=50 width=50 class='img-thumbnail'></td>
                                             <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
                                             <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td><a href="add-book.php"><span class='glyphicon glyphicon-edit'></span>|</a><span class='glyphicon glyphicon-trash'></td>
-                                            <td></td>
+                                            <td class="center">&nbsp;&nbsp;<a href="deleteBook.php?id=<?php echo htmlentities($result->id);?>"><span class='glyphicon glyphicon-trash'></a></td>
+                                            <td class="center"><?php echo "Available"; ?></td>
                                       
 <?php                                        
    }

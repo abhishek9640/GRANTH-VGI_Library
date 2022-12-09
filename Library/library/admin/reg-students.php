@@ -128,7 +128,7 @@ foreach($results as $result)
 <a href="reg-students.php?id=<?php echo htmlentities($result->id);?>" onclick="return confirm('Are you sure you want to active this student?');"><button class="btn btn-primary"> Active</button> 
                                             <?php } ?>
 
-<a href="student-history.php?stdid=<?php echo htmlentities($result->collegeid);?>"><button class="btn btn-success"> Details</button> 
+<a href="student-history.php?collegeid=<?php echo htmlentities($result->collegeid);?>"><button class="btn btn-success"> Details</button> 
 
                                           
                                             </td>

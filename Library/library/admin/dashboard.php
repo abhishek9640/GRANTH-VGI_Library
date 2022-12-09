@@ -136,6 +136,21 @@ $listdcats=$query5->rowCount();
                     </div></a>
              
 
+
+                    <a href="NoticeReport.php">
+<div class="col-md-3 col-sm-3 rscol-xs-6">
+ <div class="alert alert-success back-widget-set text-center">
+ <i class="fa fa-book fa-5x"></i>
+<?php 
+$sql ="SELECT id from tblnotice ";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$listdnotice=$query->rowCount();
+?>
+<h3><?php echo htmlentities($listdnotice);?></h3>
+Notices
+</div></div></a>
         </div>             
             
     </div>

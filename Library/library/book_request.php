@@ -20,7 +20,7 @@ if(isset($_POST['request']))
  $book=$_POST['book']; 
  $otp = random_int(100000, 999999);
  $x = $o->addBookRequest($collegeid,$fname,$email,$cat,$author,$book,$otp);
- echo '<script>alert("Your request for following books has been sent to Librarian and ur OTP is - '.$otp.'")</script>';
+ echo '<script>alert("Your request for following books has been sent to Librarian and your book request id is - '.$otp.'")</script>';
 }
 }
 ?>

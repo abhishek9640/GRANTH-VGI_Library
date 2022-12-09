@@ -44,6 +44,13 @@ class Admin
      $x = mysqli_query($dsn, "select sno,collegeid,name,mailid,categoryName,authorName,bookname,otp,remarks,requestdate from tblbooks b,tblbookrequest r,tblcategory c,tblauthors a where c.id = category and a.id = author and b.id = book");
      return $x;
    }
+   function approveBook($sno)
+   {
+      $dsn = $this->connect();
+      $x = mysqli_query($dsn, "select sno,collegeid,name,mailid,categoryName,authorName,bookname,otp,remarks,requestdate from tblbooks b,tblbookrequest r,tblcategory c,tblauthors a where c.id = category and a.id = author and b.id = book and sno = $sno");
+      return $x;
+
+   }
    function approve($sno)
    {
      $dsn = $this->connect();
@@ -54,6 +61,7 @@ class Admin
         $x = mysqli_query($dsn, "update tblBookStocks set issuedbooks=issuedbooks+1 where bookid=$r[0]");
         $x = mysqli_query($dsn, "insert into tblIssuedBook(collegeid,name,mailid,category,author,book,otp,issueddate,returndate,remarks) select collegeid,name,mailid,category,author,book,otp,now(),DATE_ADD(now(),INTERVAL 10 DAY),'ISSUED' from tblbookrequest where sno=$sno");
         $x = mysqli_query($dsn, "delete from tblBookRequest where sno = $sno");
+        return $x;
      }  
      return $r;
    }
@@ -94,10 +102,16 @@ class Admin
       $x = mysqli_query($dsn,"select sno,collegeid,name,mailid,categoryName,authorName,bookname,remarks,issueddate,returndate,datediff(DATE_FORMAT(now(), '%Y-%c-%d'),DATE_FORMAT(returndate, '%Y-%c-%d')) from tblbooks b,tblIssuedbook r,tblcategory c,tblauthors a where c.id = category and a.id = author and b.id = book and remarks='ISSUED' and collegeid='$id'");
       return $x;
    }
+   // function IsAvailableBook($id)
+   // {
+   //    $dsn = $this->connect();
+   //    $x = mysqli_query($dsn,"select totalbooks, issuedbooks from tblbookstock where bookid='$id'");
+   //    return $x;
+   // }
    function getUserRequestedBooks($id)
    {
       $dsn = $this->connect();
-      $x = mysqli_query($dsn,"select sno,collegeid,name,mailid,categoryName,authorName,bookname,remarks from tblissuedbook r,tblbooks b,tblcategory c,tblauthors a where c.id = category and a.id = author and b.id = book and remarks='RETURNED' and collegeid='$id'");
+      $x = mysqli_query($dsn,"select sno,collegeid,name,mailid,categoryName,authorName,bookname,remarks,issueddate,returndate,datediff(DATE_FORMAT(now(), '%Y-%c-%d'),DATE_FORMAT(returndate, '%Y-%c-%d')) from tblbooks b,tblIssuedbook r,tblcategory c,tblauthors a where c.id = category and a.id = author and b.id = book and remarks='RETURNED' and collegeid='$id'");
       return $x;
    }
    function returnbook($sno,$fine)
@@ -120,7 +134,32 @@ class Admin
       $x = mysqli_query($dsn,"insert into tblBooks(BookName,CatId,AuthorId,ISBNNumber,bookImage,updationDate) values('$BookName','$CatId','$AuthorId','$ISBNNumber','$bookImage',now())");
       $x = mysqli_query($dsn,"INSERT INTO  tblbookstocks(totalbooks,issuedbooks) VALUES($numofbook,0)");
       return $x;
-   }   
+   } 
+   
+   function uploadNotice($photo)
+   {
+     $dsn = $this->connect();
+     $x = mysqli_query($dsn, "INSERT INTO tblNotice(notice,ndate) VALUES ('$photo',now())");
+     return $x;
+   }
+   function getNotices()
+   {
+     $dsn = $this->connect();
+     $x = mysqli_query($dsn, "SELECT id,ndate from tblNotice order by 1");
+     return $x;
+   }
+   function getNotice($x)
+   {
+     $dsn = $this->connect();
+     $x = mysqli_query($dsn, "SELECT notice from tblNotice where id = $x");
+     return $x;
+   }
+   function delNotice($x)
+   {
+     $dsn = $this->connect();
+     $x = mysqli_query($dsn, "delete from tblNotice where id = $x");
+     return $x;
+   }
    // function addUser($userid,$pass,$wmode,$name,$dob,$mailid,$mobile,$address)
    // {
    //    $dsn = $this->connect();
@@ -181,6 +220,12 @@ class Admin
       $x = mysqli_query($dsn, "delete from tblComplaint where sno = $sno");
       return $x; 
    }
+   function deleteBook($id)
+   {
+      $dsn = $this->connect();
+      $x = mysqli_query($dsn, "delete from tblbooks where id = $id");
+      return $x; 
+   }
    function getComplaint($sno)
    {
       $dsn = $this->connect();
@@ -194,20 +239,6 @@ class Admin
       return $x;
    }
    
-
-   function getAllBooksReport()
-   {
-      $dsn = $this->connect();
-      $x = mysqli_query($dsn, "SELECT * from tblbooks order by 1");
-      return $x;
-       
-   }
-   function deleteBook($id)
-   {
-      $dsn = $this->connect();
-      $x = mysqli_query($dsn, "delete from tblbooks where id = '$id'");
-      return $x; 
-   }
    
 }
 $o = new Admin();

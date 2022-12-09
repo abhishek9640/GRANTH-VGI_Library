@@ -120,8 +120,6 @@
         <a href="http://localhost/php_programs/Library/library/login.php" class="link-get-started">Log In</a>/
         <a href="http://localhost/php_programs/Library/library/signup.php" class="link-get-started">Sign Up</a>
       </div>
-      <!-- <a href="/logins and registrations/user_registration.html" class="get-started-btn">Sign Up</a> -->
-
     </div>
   </header><!-- End Header -->
 </header>
@@ -190,9 +188,6 @@
             </div>
         </div>
     </div>
-
-
-
     </div>
 
 <script src="https://www.vgi.ac.in/themes/pixel/js/jquery.min.js"></script>
@@ -214,6 +209,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
     <script src="https://www.vgi.ac.in/themes/pixel/js/inner-page.js"></script>
-<!-- <script>var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/5d4172797d27204601c88ea3/default';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();</script> -->
 </body>
 </html>

@@ -52,7 +52,7 @@ $rs = mysqli_fetch_row($x);
 
 
 <a href="listed-books.php">
-<div class="col-md-4 col-sm-4 col-xs-6">
+<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
  <div class="alert alert-success back-widget-set text-center">
  <i class="fa fa-book fa-5x"></i>
 <?php 
@@ -65,21 +65,24 @@ $listdbooks=$query->rowCount();
 <h3><?php echo htmlentities($listdbooks);?></h3>
 Books Listed
 </div></div></a>
+
+
+
              
 
 
 
 <a href="issued-books.php">
-<div class="col-md-4 col-sm-4 col-xs-6">
+<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
 <div class="alert alert-warning back-widget-set text-center">
 <i class="fa fa-recycle fa-5x"></i>
 <?php 
 $rsts=0;
 $collegeid=$_SESSION['collegeid'];
-$sql2 ="SELECT id from tblissuedbookdetails where collegeid=:collegeid and (RetrunStatus=:rsts || RetrunStatus is null || RetrunStatus='')";
+$sql2 ="SELECT sno from tblissuedbook where collegeid=:collegeid and remarks='ISSUED'";
 $query2 = $dbh -> prepare($sql2);
 $query2->bindParam(':collegeid',$collegeid,PDO::PARAM_STR);
-$query2->bindParam(':rsts',$rsts,PDO::PARAM_STR);
+//$query2->bindParam(':rsts',$rsts,PDO::PARAM_STR);
 $query2->execute();
 $results2=$query2->fetchAll(PDO::FETCH_OBJ);
 $returnedbooks=$query2->rowCount();
@@ -91,13 +94,40 @@ $returnedbooks=$query2->rowCount();
 
 
 <a href="UserReqBooks.php">
-<div class="col-md-4 col-sm-4 col-xs-6">
+<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
 <div class="alert alert-success back-widget-set text-center">
 <i class="fa fa-book fa-5x"></i>
-<h3>&nbsp;</h3>
-Requested Books
+<?php 
+$rsts=0;
+$sql2 ="SELECT sno from tblissuedbook where collegeid=:collegeid and remarks='RETURNED'";
+$query2 = $dbh -> prepare($sql2);
+$query2->bindParam(':collegeid',$collegeid,PDO::PARAM_STR);
+//$query2->bindParam(':rsts',$rsts,PDO::PARAM_STR);
+$query2->execute();
+$results2=$query2->fetchAll(PDO::FETCH_OBJ);
+$returnedbooks=$query2->rowCount();
+?>
+<h3><?php echo htmlentities($returnedbooks);?></h3>
+
+Returned Books
 </div></div></a>
 
+
+
+<a href="UserNoticeReport.php">
+<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+ <div class="alert alert-success back-widget-set text-center">
+ <i class="fa fa-file-archive-o fa-5x"></i>
+<?php 
+$sql ="SELECT id from tblnotice ";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$listdnotice=$query->rowCount();
+?>
+<h3><?php echo htmlentities($listdnotice);?></h3>
+Notices
+</div></div></a>
 
 
 

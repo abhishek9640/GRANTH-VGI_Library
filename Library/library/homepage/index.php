@@ -43,19 +43,15 @@
           <li><a class="active" href="http://localhost/php_programs/Library/library/homepage/index.php">Home</a></li>
           <li><a href="http://localhost/php_programs/Library/library/About/index.php">About</a></li>
           <li><a href="http://localhost/php_programs/Library/library/Contact/index.php">Contact Us</a></li>
-          <!-- <li><a href="http://localhost/php_programs/Library/library/Feedback/feedback.php">Feedback</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
-      <!-- .navbar -->
+      <!--End-navbar -->
 
       <div class="get-started-btn">
-        <!-- <a href="http://localhost/php_programs/Library/library/login.php" class="link-get-started">Log In</a>/ -->
         <a href="http://localhost/php_programs/Library/library/signup.php" class="link-get-started">Sign Up</a>
       </div>
-      <!-- <a href="/logins and registrations/user_registration.html" class="get-started-btn">Sign Up</a> -->
-
-    </div>
+     </div>
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -97,7 +93,6 @@
                 <input type="email" name="email" placeholder="Coming Soon"><input type="submit" value="Subscribe" >
               </form>
             </div>
-
           </div>
         </div>
       </div>

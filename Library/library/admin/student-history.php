@@ -7,34 +7,8 @@ if(strlen($_SESSION['login'])==0)
 header('location:http://localhost/php_programs/Library/library/homepage/index.php');
 }
 else{ 
+    
 
-// code for block student    
-if(isset($_GET['inid']))
-{
-$id=$_GET['inid'];
-$status=0;
-$sql = "update tblstudents set Status=:status  WHERE id=:id";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':id',$id, PDO::PARAM_STR);
-$query -> bindParam(':status',$status, PDO::PARAM_STR);
-$query -> execute();
-header('location:reg-students.php');
-}
-
-
-
-//code for active students
-if(isset($_GET['id']))
-{
-$id=$_GET['id'];
-$status=1;
-$sql = "update tblstudents set Status=:status  WHERE id=:id";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':id',$id, PDO::PARAM_STR);
-$query -> bindParam(':status',$status, PDO::PARAM_STR);
-$query -> execute();
-header('location:reg-students.php');
-}
 
 
     ?>
@@ -45,7 +19,7 @@ header('location:reg-students.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>GRANTH | Student History</title>
+    <title>GRANTH | Manage Issued Books</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -62,14 +36,23 @@ header('location:reg-students.php');
       <!------MENU SECTION START-->
 <?php include('includes/header.php');?>
 <!-- MENU SECTION END-->
-    <div class="content-wrapper">
+   
+
+
+
+
+</div>
+<div class="content-wrapper">
          <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
-                <?php $collegeid=$_GET['collegeid']; ?>
-                <h4 class="header-line">#<?php echo $collegeid;?> Book Issued History</h4>
+                <?php $collegeid=$_GET['collegeid']; 
+                ?>
+                <h4 class="header-line"> Book Issued History - <?php echo $collegeid;?></h4>
     </div>
 
+
+        </div>
 
         </div>
             <div class="row">
@@ -77,57 +60,54 @@ header('location:reg-students.php');
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-
-<?php echo $collegeid;?> Details
+                        <?php echo "<b>All Boooks Issued to this $collegeid is listed below :<b>";?>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>College ID</th>
+                                           
+                                            <th>Student Id</th>
                                             <th>Student Name</th>
-                                            <th>Issued Book  </th>
+                                            <th>Email Id</th>
+                                            <th>Category</th>
+                                            <th>Author</th>
+                                            <th>Book Name</th>
+                                            <th>Status</th>
                                             <th>Issued Date</th>
-                                            <th>Returned Date</th>
-                                            <th>Fine (if any)</th>
-          
+                                            <th>Return Date</th>
+                                            <th>Fine(INR)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php 
-
-$sql = "SELECT tblstudents.collegeid ,tblstudents.FullName,tblstudents.EmailId,tblstudents.MobileNumber,tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid,tblissuedbookdetails.fine,tblissuedbookdetails.RetrunStatus,tblbooks.id as bid,tblbooks.bookImage from  tblissuedbookdetails join tblstudents on tblstudents.collegeid=tblissuedbookdetails.collegeid join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblstudents.collegeid='$collegeid' ";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{               ?>                                      
-                                        <tr class="odd gradeX">
-                                            <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->collegeid);?></td>
-                                            <td class="center"><?php echo htmlentities($result->FullName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->IssuesDate);?></td>
-                                            <td class="center"><?php if($result->ReturnDate==''): echo "Not returned yet";
-                                            else: echo htmlentities($result->ReturnDate); endif;?></td>
-                                             <td class="center"><?php if($result->ReturnDate==''): echo "Not returned yet";
-                                              else: echo $result->fine; endif;
-                                             ?></td>
-                                            
-                            
-                                        </tr>
- <?php $cnt=$cnt+1;}} ?>                                      
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
+ <?php
+    include_once '../Admin.php';
+ 
+    $x = $o->getUserIssuedBooks($collegeid);
+    $fine = 0;
+    for($i=0;$i<mysqli_num_rows($x);$i++)
+    { 
+     $rs = mysqli_fetch_row($x);
+     echo "<tr>";
+     for($k=1;$k<count($rs)-1;$k++)
+     {
+        echo "<td>$rs[$k]</td>";
+     }
+     if($rs[count($rs)-1]<=0)
+       $fine=0;
+     else
+       $fine=$rs[count($rs)-1]*10;
+    echo "<td>",$fine,"</td>";
+    //  echo "<td><a href=ReturnBook.php?n=$rs[0]&f=$fine>Return</a></a></td>";
+     echo "</tr>";
+    }
+  ?>
+  </table>
+  <?php
+     if(isset($_GET["j"]))
+       echo "Book Successfully Return to Library";
+  ?>
                     <!--End Advanced Tables -->
                 </div>
             </div>
@@ -136,7 +116,17 @@ foreach($results as $result)
             
     </div>
     </div>
+<pre>
 
+
+
+
+
+
+
+
+
+</pre>
      <!-- CONTENT-WRAPPER SECTION END-->
   <?php include('includes/footer.php');?>
       <!-- FOOTER SECTION END-->

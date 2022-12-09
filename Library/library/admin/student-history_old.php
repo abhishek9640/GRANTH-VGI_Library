@@ -7,8 +7,34 @@ if(strlen($_SESSION['login'])==0)
 header('location:http://localhost/php_programs/Library/library/homepage/index.php');
 }
 else{ 
-    
 
+// code for block student    
+if(isset($_GET['inid']))
+{
+$id=$_GET['inid'];
+$status=0;
+$sql = "update tblstudents set Status=:status  WHERE id=:id";
+$query = $dbh->prepare($sql);
+$query -> bindParam(':id',$id, PDO::PARAM_STR);
+$query -> bindParam(':status',$status, PDO::PARAM_STR);
+$query -> execute();
+header('location:reg-students.php');
+}
+
+
+
+//code for active students
+if(isset($_GET['id']))
+{
+$id=$_GET['id'];
+$status=1;
+$sql = "update tblstudents set Status=:status  WHERE id=:id";
+$query = $dbh->prepare($sql);
+$query -> bindParam(':id',$id, PDO::PARAM_STR);
+$query -> bindParam(':status',$status, PDO::PARAM_STR);
+$query -> execute();
+header('location:reg-students.php');
+}
 
 
     ?>
@@ -19,7 +45,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>GRANTH | Manage Issued Books</title>
+    <title>GRANTH | Student History</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -34,57 +60,37 @@ else{
 </head>
 <body>
       <!------MENU SECTION START-->
-<?php include('includes/header.php');?>
+<?php include('includes/header.php');
+include_once '../Admin.php'?>
+
 <!-- MENU SECTION END-->
     <div class="content-wrapper">
-         <div class="container-fluid">
+         <div class="container">
         <div class="row pad-botm">
-       <div class="row">
-    <?php if($_SESSION['error']!="")
-    {?>
-<div class="col-md-6">
-<div class="alert alert-danger" >
- <strong>Error :</strong> 
- <?php echo htmlentities($_SESSION['error']);?>
-<?php echo htmlentities($_SESSION['error']="");?>
-</div>
-</div>
-<?php } ?>
-<?php if($_SESSION['msg']!="")
-{?>
-<div class="col-md-6">
-<div class="alert alert-success" >
- <strong>Success :</strong> 
- <?php echo htmlentities($_SESSION['msg']);?>
-<?php echo htmlentities($_SESSION['msg']="");?>
-</div>
-</div>
-<?php } ?>
-
-
-
-   <?php if($_SESSION['delmsg']!="")
-    {?>
-<div class="col-md-6">
-<div class="alert alert-success" >
- <strong>Success :</strong> 
- <?php echo htmlentities($_SESSION['delmsg']);?>
-<?php echo htmlentities($_SESSION['delmsg']="");?>
-</div>
-</div>
-<?php } ?>
-
-</div>
+            <div class="col-md-12">
+                <?php $collegeid=$_GET['collegeid']; 
+                ?>
+                <h4 class="header-line"> Book Issued History - <?php echo $collegeid;?></h4>
+    </div>
 
 
         </div>
+        
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                          Issued Books 
+
+ Details
                         </div>
+                        <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <!-- <div class="panel panel-default">
+                        <div class="panel-heading">
+                          Issued Books 
+                        </div> -->
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -107,7 +113,7 @@ else{
  <?php
     include_once 'Admin.php';
     $collegeid = $_SESSION['collegeid'];
-    $x = $o->getUserRequestedBooks($collegeid);
+    $x = $o->getUserIssuedBooks($collegeid);
     $fine = 0;
     for($i=0;$i<mysqli_num_rows($x);$i++)
     { 
@@ -127,29 +133,18 @@ else{
     }
   ?>
   </table>
-  <?php
-     if(isset($_GET["j"]))
-       echo "Book Successfully Return to Library";
-  ?>
-                    <!--End Advanced Tables -->
-                </div>
-            </div>
-
-
-            
-    </div>
-    </div>
-<pre>
+  <pre>
 
 
 
 
 
 
+  
 
+  
+  </pre>
 
-
-</pre>
      <!-- CONTENT-WRAPPER SECTION END-->
   <?php include('includes/footer.php');?>
       <!-- FOOTER SECTION END-->

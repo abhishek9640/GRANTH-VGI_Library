@@ -10,7 +10,7 @@ else{
 
 if(isset($_POST['add']))
 {
-  $bookname=$_POST['bookname'];
+$bookname=$_POST['bookname'];
 $category=$_POST['category'];
 $author=$_POST['author'];
 $isbn=$_POST['isbn'];

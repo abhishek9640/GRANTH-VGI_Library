@@ -66,7 +66,7 @@
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="my-profile.php">My Profile</a></li>
                                     <li><a href="change-password.php">Change Password</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="complaintreport.php">Complaint Report</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Feedback Report</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="NoticeForm.php">Add Notice</a></li>
                                 </ul>
                             </li>
                         </ul>

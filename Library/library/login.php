@@ -147,9 +147,12 @@ session_start();
               <pre>
               </pre>
               <div class="text-center">
-                <button type="submit" name="login" class="btn btn-color px-5 mb-5 w-100">
+                <button type="submit" name="login" class="btn btn-color px-5 mb-3 w-100">
                   Login
                 </button>
+              </div>
+              <div id="emailHelp" class="form-text mb-5 fw-bold">
+               <a href="#"> Forgot password</a>
               </div>
               <div id="emailHelp" class="form-text text-center mb-5 text-dark">
                 Not Registered?

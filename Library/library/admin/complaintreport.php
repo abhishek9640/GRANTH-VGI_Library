@@ -55,7 +55,6 @@ else{?>
       echo "Ur Complaints Successfully Deleted...";
   if(isset($_GET["v"]))
       echo "Complaints Successfully Resolved...";
-  
   include "Footer.php";
 ?>
 
