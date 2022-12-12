@@ -92,13 +92,13 @@ error:function (){}
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="http://localhost/php_programs/Library/library/homepage/index.php">Home</a>
+                <a class="nav-link" aria-current="page" href="http://localhost/Library/library/homepage/index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost/php_programs/Library/library/About/index.php">About</a>
+                <a class="nav-link" href="http://localhost/Library/library/About/index.php">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost/php_programs/Library/library/Contact/index.php">Contact us</a>
+                <a class="nav-link" href="http://localhost/Library/library/Contact/index.php">Contact us</a>
               </li>
             </ul>
           </div>
@@ -158,7 +158,7 @@ error:function (){}
         </div>
         <div id="emailHelp" class="form-text text-center mb-5 text-dark">
           Already a member ,
-          <a href="http://localhost/php_programs/Library/library/login.php" class="text-dark fw-bold"> LogIn </a>
+          <a href="http://localhost/Library/library/login.php" class="text-dark fw-bold"> LogIn </a>
         </div>
       </form>
     </div>

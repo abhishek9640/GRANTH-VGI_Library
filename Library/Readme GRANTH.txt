@@ -21,7 +21,7 @@ It can be easily implemented under various situations and systems. We can add ne
 features as and when we require. There is flexibility in all the modules and submodules. 
 
 Instruction:
- path: http://localhost/php_programs/Library/library/homepage/index.php
+ path: http://localhost/Library/library/homepage/index.php
 
 UserID  : 0205CSE042	
 password: abhiji

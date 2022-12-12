@@ -94,13 +94,13 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="http://localhost/php_programs/Library/library/homepage/index.php">Home</a>
+              <a class="nav-link" aria-current="page" href="http://localhost/Library/library/homepage/index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost/php_programs/Library/library/About/index.php">About</a>
+              <a class="nav-link" href="http://localhost/Library/library/About/index.php">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost/php_programs/Library/library/Contact/index.php">Contact us</a>
+              <a class="nav-link" href="http://localhost/Library/library/Contact/index.php">Contact us</a>
             </li>
           </ul>
         </div>
@@ -156,7 +156,7 @@ session_start();
               </div>
               <div id="emailHelp" class="form-text text-center mb-5 text-dark">
                 Not Registered?
-                <a href="http://localhost/php_programs/Library/library/signup.php" class="text-dark fw-bold"> Create an Account</a>
+                <a href="http://localhost/Library/library/signup.php" class="text-dark fw-bold"> Create an Account</a>
               </div>
             </form>
           </div>

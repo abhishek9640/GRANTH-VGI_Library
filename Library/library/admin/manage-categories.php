@@ -4,7 +4,7 @@ error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['login'])==0)
     {   
-header('location:http://localhost/php_programs/Library/library/homepage/index.php');
+header('location:http://localhost/Library/library/homepage/index.php');
 }
 else{ 
 if(isset($_GET['del']))

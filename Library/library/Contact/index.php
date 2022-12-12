@@ -140,16 +140,16 @@
     
           <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-              <li><a  href="http://localhost/php_programs/Library/library/homepage/index.php">Home</a></li>
-              <li><a  href="http://localhost/php_programs/Library/library/About/index.php">About</a></li>
-              <li><a class="active" href="http://localhost/php_programs/Library/library/Contact/index.php">Contact</a></li>
+              <li><a  href="http://localhost/Library/library/homepage/index.php">Home</a></li>
+              <li><a  href="http://localhost/Library/library/About/index.php">About</a></li>
+              <li><a class="active" href="http://localhost/Library/library/Contact/index.php">Contact</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
     
           <div class="get-started-btn">
-            <a href="http://localhost/php_programs/Library/library/login.php" class="link-get-started">Log In</a>/
-            <a href="http://localhost/php_programs/Library/library/signup.php" class="link-get-started">Sign Up</a>
+            <a href="http://localhost/Library/library/login.php" class="link-get-started">Log In</a>/
+            <a href="http://localhost/Library/library/signup.php" class="link-get-started">Sign Up</a>
           </div>
           <!-- <a href="/logins and registrations/user_registration.html" class="get-started-btn">Sign Up</a> -->
     

@@ -40,16 +40,16 @@
         <!-- .navbar -->
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="http://localhost/php_programs/Library/library/homepage/index.php">Home</a></li>
-          <li><a href="http://localhost/php_programs/Library/library/About/index.php">About</a></li>
-          <li><a href="http://localhost/php_programs/Library/library/Contact/index.php">Contact Us</a></li>
+          <li><a class="active" href="http://localhost/Library/library/homepage/index.php">Home</a></li>
+          <li><a href="http://localhost/Library/library/About/index.php">About</a></li>
+          <li><a href="http://localhost/Library/library/Contact/index.php">Contact Us</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
       <!--End-navbar -->
 
       <div class="get-started-btn">
-        <a href="http://localhost/php_programs/Library/library/signup.php" class="link-get-started">Sign Up</a>
+        <a href="http://localhost/Library/library/signup.php" class="link-get-started">Sign Up</a>
       </div>
      </div>
   </header><!-- End Header -->
@@ -61,8 +61,8 @@
       <h2>There is only one thing that could replace a book : The Next Book <br>"Nothing is pleasanter than exploring a
         library".<br> It store the energy that fuels the imagination.<br> They open up windows to the world and inspire us to
         explore and <br>achieve, and contribute to improving our quality of life.</h2>
-      <a href="http://localhost/php_programs/Library/library/login.php" class="btn-get-started">Log In</a>
-      <a href="http://localhost/php_programs/Library/library/signup.php" class="btn-get-started">Sign Up</a>
+      <a href="http://localhost/Library/library/login.php" class="btn-get-started">Log In</a>
+      <a href="http://localhost/Library/library/signup.php" class="btn-get-started">Sign Up</a>
     </div>
   </section><!-- End Hero -->
 
