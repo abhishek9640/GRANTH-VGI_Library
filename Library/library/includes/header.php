@@ -40,7 +40,7 @@
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="my-profile.php">My Profile</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="change-password.php">Change Password</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="ComplaintForm.php">Raise Complaints</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="feedback.php">Give Feedback</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="SuggestBookForm.php">Suggest Book</a></li>
                                 </ul>
                             </li>
 

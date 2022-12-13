@@ -38,6 +38,13 @@ class Admin
       $x = mysqli_query($dsn, "SELECT FullName,EmailId from tblstudents where collegeid='$id'"); 
       return $x;
    }
+
+   function getDetails($id)
+   {
+      $dsn = $this->connect();
+      $x = mysqli_query($dsn, "SELECT * from tblstudents where collegeid='$id'"); 
+      return $x;
+   }
    function getBookRequest()
    {
      $dsn = $this->connect();
@@ -237,6 +244,26 @@ class Admin
       $dsn = $this->connect();
       $x = mysqli_query($dsn, "update tblcomplaint set complaint_status='RESOLVED', resolvemessage='$rmsg', resolve_date=now() where sno = '$sno'");
       return $x;
+   }
+
+   function getAllSuggestBookReport()
+   {
+      $dsn = $this->connect();
+      $x = mysqli_query($dsn, "SELECT * from tblsuggestbook order by 1");
+      return $x;
+       
+   }
+   function deleteSugBook($sno)
+   {
+      $dsn = $this->connect();
+      $x = mysqli_query($dsn, "delete from tblsuggestbook where sno = $sno");
+      return $x; 
+   }
+   function SuggestBook($name,$collegeid,$phoneno,$email,$department, $booksug)
+   {
+      $dsn = $this->connect();
+      $x = mysqli_query($dsn, "insert into tblsuggestbook(name,collegeid,phoneno,email,department,booksug,Date) values('$name','$collegeid','$phoneno','$email','$department',' $booksug',now())");    
+      return $x; 
    }
    
    

@@ -2,32 +2,26 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if(strlen($_SESSION['login'])==0)
-    {   
-header('location:http://localhost/Library/library/homepage/index.php');
-}
-else{ 
+if (strlen($_SESSION['login']) == 0) {
+    header('location:http://localhost/Library/library/homepage/index.php');
+} else {
 
-if(isset($_POST['create']))
-{
-$author=$_POST['author'];
-$sql="INSERT INTO  tblauthors(AuthorName) VALUES(:author)";
-$query = $dbh->prepare($sql);
-$query->bindParam(':author',$author,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$_SESSION['msg']="Author Listed successfully";
-header('location:manage-authors.php');
-}
-else 
-{
-$_SESSION['error']="Something went wrong. Please try again";
-header('location:manage-authors.php');
-}
+    if (isset($_POST['create'])) {
+        $author = $_POST['author'];
+        $sql = "INSERT INTO  tblauthors(AuthorName) VALUES(:author)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':author', $author, PDO::PARAM_STR);
+        $query->execute();
+        $lastInsertId = $dbh->lastInsertId();
+        if ($lastInsertId) {
+            $_SESSION['msg'] = "Author Listed successfully";
+            header('location:manage-authors.php');
+        } else {
+            $_SESSION['error'] = "Something went wrong. Please try again";
+            header('location:manage-authors.php');
+        }
 
-}
+    }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,7 +43,7 @@ header('location:manage-authors.php');
 </head>
 <body>
       <!------MENU SECTION START-->
-<?php include('includes/header.php');?>
+<?php include('includes/header.php'); ?>
 <!-- MENU SECTION END-->
     <div class="content-wra
     <div class="content-wrapper">
@@ -86,7 +80,7 @@ Author Info
     </div>
     </div>
      <!-- CONTENT-WRAPPER SECTION END-->
-  <?php include('includes/footer.php');?>
+  <?php include('includes/footer.php'); ?>
       <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY  -->
