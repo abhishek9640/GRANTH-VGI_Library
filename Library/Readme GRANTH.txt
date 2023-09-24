@@ -1,4 +1,4 @@
-GRANTH - DIGITAL LIBRARY
+GRANTH - VGI Library and Notice Portal
 INTRODUCTION
 “Granth” is the digitalization of existing library system. It is aimed to automate the existing 
 system of manually working processes and to manage several important activities of 
